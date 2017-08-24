@@ -21,5 +21,4 @@ void strInsert(char a[],char b[],int n)
     strcat(c,b);
     strcat(c,a+n);
     strcpy(a,c);
-    return 0;
 }
