@@ -1,33 +1,27 @@
-#include<stdio.h>
-#define MAX 1000
-int isHoanhao(int a);
-int main()
-{
-    int a,b,i;
-    scanf("%d",&a);
-    scanf("%d",&b);
-    for(i=a;i<=b;i++)
-    {
-        if(isHoanhao(i)==1)
-            printf("%d ",i);
-    }
-    return 0;
-}
-int isHoanhao(int a)
-{
-    int b[MAX],i,j=0,sum=0;
-    for(i=1;i<a;i++)
-    {
-        if(a%i==0)
-        {
-            b[j]=i;
-            j++;
+#include <stdio.h>
+int isHoanHao(int a){
+    if(a < 6) return 0;
+    int sum = 1;
+    int k = a, i;
+    for(i = 2; i < k; i++){
+        if(a % i == 0){
+            k = a / i;
+            sum+=(k+i);
         }
     }
-    for(i=0;i<j;i++)
-        sum+=b[i];
-    if(sum==a)
-        return 1;
-    else
-        return 0;
+    return sum == a;
+}
+int main(){
+    int a, b, i; scanf("%d%d", &a, &b);
+    if(a <= b){
+        for(i = a; i <= b; i++){
+            if(isHoanHao(i)) printf("%d ", i);
+        }
+    }
+    else{
+        for(i = b; i <= a; i++){
+            if(isHoanHao(i)) printf("%d ", i);
+        }
+    }
+    return 0;
 }
